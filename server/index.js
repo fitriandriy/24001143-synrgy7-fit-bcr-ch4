@@ -16,6 +16,7 @@ const mimeTypes = {
   '.js': 'text/javascript',
   '.json': 'application/json',
   '.png': 'image/png',
+  '.svg': 'image/svg+xml',
   '.jpg': 'image/jpeg',
   '.gif': 'image/gif'
 };
@@ -63,50 +64,6 @@ const onRequest = (req, res) => {
     });
     return;
   }
-
-  // switch(req.url) {
-  //   case "/dataa":
-  //     const result = await filter()
-  //     console.log(req.data)
-  //     res.writeHead(200)
-  //     res.end(JSON.stringify(result))
-  //     return;
-  //   case "/":
-  //     res.writeHead(200)
-  //     res.end(getHTML("index.html"))
-  //     return;
-  //   case "/example":
-  //     res.writeHead(200)
-  //     res.end(getHTML("index.example.html"))
-  //     return;
-  //   case "/about":
-  //     res.writeHead(200)
-  //     res.end(getHTML("about.html"))
-  //     return;
-  //   case "/cars":
-  //     res.writeHead(200)
-  //     res.end(getHTML("products.html"))
-  //     return;
-  //   case "/product/detail":
-  //     res.writeHead(200)
-  //     res.end(getHTML("detail.html"))
-  //     return;
-  //   default:
-  //     const filePath = path.join(PUBLIC_DIRECTORY, req.url);
-  //     const extname = path.extname(filePath);
-  //     const contentType = mimeTypes[extname] || 'application/octet-stream';
-      
-  //     fs.readFile(filePath, (err, data) => {
-  //       if (err) {
-  //         res.writeHead(404);
-  //         res.end(getHTML("404.html"))
-  //       } else {
-  //         res.writeHead(200, { 'Content-Type': contentType });
-  //         res.end(data);
-  //       }
-  //     });
-  //     return;
-  // }
 }
 
 const server = http.createServer(onRequest);

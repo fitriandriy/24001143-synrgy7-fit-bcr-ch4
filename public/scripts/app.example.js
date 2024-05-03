@@ -1,23 +1,22 @@
 class App {
   constructor() {
-    this.clearButton = document.getElementById("clear-btn");
-    this.loadButton = document.getElementById("load-btn");
-    this.carContainerElement = document.getElementById("cars-container");
+    this.searchButton = document.getElementById("filter-btn");
+    this.resultContainerElement = document.getElementById("result");
   }
 
   async init() {
-    await this.load();
+    // await this.load();
 
     // Register click listener
     this.clearButton.onclick = this.clear;
-    this.loadButton.onclick = this.run;
+    this.searchButton.onclick = this.run;
   }
 
   run = () => {
     Car.list.forEach((car) => {
       const node = document.createElement("div");
       node.innerHTML = car.render();
-      this.carContainerElement.appendChild(node);
+      this.resultContainerElement.appendChild(node);
     });
   };
 
@@ -27,11 +26,11 @@ class App {
   }
 
   clear = () => {
-    let child = this.carContainerElement.firstElementChild;
+    let child = this.resultContainerElement.firstElementChild;
 
     while (child) {
       child.remove();
-      child = this.carContainerElement.firstElementChild;
+      child = this.resultContainerElement.firstElementChild;
     }
   };
 }

@@ -12,9 +12,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
-    <section class="bg-[#F1F3FF] md:pl-[20px] text-[14px] md:h-[100vh]">
+    <section class="relative bg-[#F1F3FF] text-[14px] lg:h-[100vh]">
       <!-- HEADER -->
-      <header class="flex justify-between items-center lg:pl-[70px] pt-[24px] px-[16px] md:pr-[20px] lg:pr-[70px]">
+      <header class="flex justify-between items-center pt-[24px] lg:pl-[70px] px-[20px] lg:px-[16px] lg:pr-[70px]">
         <p class="font-bold pt-2">BinarCarRent</p>
         <div class="relative">
           <button class="md:hidden" onclick="toggleMenu()"><img id="burgerButton" src="images/menu.svg" alt="close button"></button>
@@ -44,53 +44,53 @@
       </header>
 
       <!-- MAIN -->
-      <div class="md:flex justify-between pl-[16px] mt-[14px] md:pt-5 xl:pt-40">
+      <div class="md:flex justify-between mt-[14px] pl-[20px] lg:pl-0 md:pt-5 lg:pt-28 xl:pt-20">
         <div class="md:w-[50%] lg:pl-[70px] lg:w-[40%] pr-5">
           <h1 class="font-bold text-[36px]"> Sewa & Rental Mobil Terbaik di kawasan Banyuwangi</h1>
           <p class="pt-[20px] font-light font-[14px] leading-[20px]">Selamat datang di Binar Car Rental. Kami menyediakan mobil kualitas <br class="hidden xl:block"> terbaik dengan harga terjangkau. Selalu siap melayani kebutuhanmu <br class="hidden xl:block"> untuk sewa mobil selama 24 jam.</p>
         </div>
-        <img class="pr-[-16px] md:w-[50%] md:absolute md:bottom-0 lg:bottom-0 md:right-0" src="images/car.png" alt="car image" />
+        <img class="lg:absolute bottom-[200px] pr-[-16px] md:w-[50%] pt-10 lg:bottom-0 md:right-0" src="images/car.png" alt="car image" />
       </div>
-    </section>
 
-    <!-- FILTER FORM -->
-    <section id="getting-started" class="bg-white lg:flex text-[14px] text-center shadow-lg border-[1px] shadow-inner md:my-20 md:mx-[70px] px-[50px] lg:my-[30px] rounded-lg py-10">
-      <form action="" class="flex flex-col lg:flex-row justify-between items-center gap-3 m-auto">
-        <div class="text-left w-[220px]">
-          <label for="cars">Tipe Driver</label>
-          <select name="driverType" id="driverType" class="text-gray-400 border-[1.5px] border-gray-300 rounded-md w-[200px] h-[35px] mt-2">
-            <option value="dengan sopir">Dengan Sopir</option>
-            <option value="tanpa sopir">Tanpa Sopir (Lepas Kunci)</option>
-          </select>
-        </div>
-        <div class="text-left w-[220px]">
-          <label for="date">Tanggal</label>
-          <input type="date" id="date" name="date" class="text-gray-400 border-[1.5px] border-gray-300 rounded-md w-[200px] h-[35px] mt-2">
-        </div>
-        <div class="text-left w-[220px]">
-          <label for="time">Waktu Jemput/Ambil</label>
-          <select name="time" id="time" class="text-gray-400 border-[1.5px] border-gray-300 rounded-md w-[200px] h-[35px] mt-2">
-            <option value="08.00">08.00 WIB</option>
-            <option value="09.00">09.00 WIB</option>
-            <option value="10.00">10.00 WIB</option>
-            <option value="11.00">11.00 WIB</option>
-            <option value="12.00">12.00 WIB</option>
-          </select>
-        </div>
-        <div class="text-left w-[220px]">
-          <label for="passengers">Jumlah Penumpang (optional)</label>
-          <input type="number" id="passengers" name="passengers" class="text-gray-400 border-[1.5px] border-gray-300 rounded-md w-[200px] h-[35px] mt-2">
-        </div>
-      </form>
-      <button onclick="filterData(event)" class="bg-[#5CB85F] px-[12px] py-[8px] mt-[29px] rounded text-white font-semibold h-[35px]">Cari Mobil</button>
+      <!-- FILTER FORM -->
+      <section class="absolute bg-white lg:bottom-[-100px] lg:flex justify-evenly w-full md:w-[95%] lg:w-[89%] text-[14px] shadow-lg border-[1px] shadow-inner text-center md:ml-[20px] lg:ml-[70px] rounded-lg py-10">
+        <form action="" class="flex flex-col gap-2 lg:flex-row justify-between items-center lg:w-[85%]">
+          <div class="text-left flex flex-col w-[80%] lg:w-[25%]">
+            <label for="cars">Tipe Driver</label>
+            <select name="driverType" id="driverType" class="text-gray-400 border-[1.5px] border-gray-300 rounded-md h-[35px] mt-2">
+              <option value="dengan sopir">Dengan Sopir</option>
+              <option value="tanpa sopir">Tanpa Sopir (Lepas Kunci)</option>
+            </select>
+          </div>
+          <div class="text-left flex flex-col w-[80%] lg:w-[25%]">
+            <label for="date">Tanggal</label>
+            <input type="date" id="date" name="date" class="text-gray-400 border-[1.5px] border-gray-300 rounded-md h-[35px] mt-2">
+          </div>
+          <div class="text-left flex flex-col w-[80%] lg:w-[25%]">
+            <label for="time">Waktu Jemput/Ambil</label>
+            <select name="time" id="time" class="text-gray-400 border-[1.5px] border-gray-300 rounded-md h-[35px] mt-2">
+              <option value="08.00">08.00 WIB</option>
+              <option value="09.00">09.00 WIB</option>
+              <option value="10.00">10.00 WIB</option>
+              <option value="11.00">11.00 WIB</option>
+              <option value="12.00">12.00 WIB</option>
+            </select>
+          </div>
+          <div class="text-left flex flex-col w-[80%] lg:w-[25%]">
+            <label for="passengers">Jumlah Penumpang</label>
+            <input type="number" id="passengers" name="passengers" class="text-gray-400 border-[1.5px] border-gray-300 rounded-md h-[35px] mt-2">
+          </div>
+        </form>
+        <button onclick="filterData(event)" id="filter-btn" class="bg-[#5CB85F] px-[12px] py-[8px] mt-[29px] rounded text-white font-semibold h-[35px]">Cari Mobil</button>
+      </section>
     </section>
 
     <!-- FILTER RESULT -->
-    <section id="result" class="grid grid-col-1 md:grid-cols-3 gap-4 text-[14px] px-[16px] md:px-[70px]">
+    <section id="result" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-[14px] px-[16px] ml-[16px] md:px-[70px] mt-[450px] lg:mt-32">
     </section>
 
     <!-- FOOTER -->
-    <footer class="text-[14px] px-[16px] md:flex justify-between mt-[100px] md:px-[70px] md:pb-[70px]">
+    <footer class="text-[14px] px-[16px] ml-[16px] md:flex justify-between mt-[100px] md:mt-[200px] lg:mt-[100px] md:px-[70px] md:pb-[70px]">
       <div>
         <p>Jalan Suroyo No. 161 Mayangan Kota <br />Probolonggo 672000</p>
         <p class="py-4 md:py-3">binarcarrental@gmail.com</p>
@@ -134,7 +134,7 @@
 
         data.forEach(item => {
           let cardHTML = `
-            <div class="card border-2 p-5 rounded-lg">
+            <div class="relative grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 card border-2 p-5 rounded-lg">
               <div class="h-[200px] w-full overflow-hidden">
                 <img class="" src=${item.image} alt="Car Image">
               </div>
@@ -150,12 +150,12 @@
                   <img class="w-[20px] mr-2" src="./images/transmission.png" alt="transmission">
                   <p>${item.transmission}</p>
                 </div>
-                <div class="flex">
+                <div class="flex mb-16">
                   <img class="w-[20px] mr-2" src="./images/year.png" alt="year">
                   <p>Tahun ${item.year}</p>
                 </div>
               </div>
-              <button class="bg-[#5CB85F] text-white w-full py-2">Pilih Mobil</button>
+              <button class="absolute bottom-5 bg-[#5CB85F] text-white w-[89%] py-2">Pilih Mobil</button>
             </div>
           `
           const container = document.getElementById('result');
