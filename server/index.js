@@ -5,7 +5,6 @@ const path = require('path')
 const bodyParser = require('body-parser');
 const { filter } = require('./cars')
 
-// Pengaturan body-parser
 const jsonParser = bodyParser.json();
 
 const PUBLIC_DIRECTORY = path.join(__dirname, '..', 'public')

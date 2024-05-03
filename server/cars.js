@@ -11,7 +11,6 @@ const filter = async (date, passengers) => {
     const result = cars.filter((car) => {
       return car.availableAt.slice(0, 10) >= date && car.capacity >= passengers
     });
-    console.log(result);
 
     if (result.length > 0) {
       return result

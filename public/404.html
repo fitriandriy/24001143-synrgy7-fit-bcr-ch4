@@ -3,9 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>404: Page Not Found!</title>
+  <title>Page Not Found</title>
+  <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+  <style>
+    * {
+      font-family: Helvetica, Arial, sans-serif;
+    }
+  </style>
 </head>
-<body>
-  <p>404: Page Not Found!</p>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+  <div class="max-w-lg w-full p-8 bg-white shadow-md rounded-md">
+    <h2 class="text-3xl font-semibold text-gray-800 mb-4">404 - Page Not Found</h2>
+    <p class="text-gray-600 mb-4">Oops! The page you are looking for might have been removed or temporarily unavailable.</p>
+    <a href="http://localhost:9000" class="text-blue-500 hover:underline">Go back to home page</a>
+  </div>
 </body>
 </html>

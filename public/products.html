@@ -15,7 +15,7 @@
     <section class="relative bg-[#F1F3FF] text-[14px] lg:h-[100vh]">
       <!-- HEADER -->
       <header class="flex justify-between items-center pt-[24px] lg:pl-[70px] px-[20px] lg:px-[16px] lg:pr-[70px]">
-        <p class="font-bold pt-2">BinarCarRent</p>
+        <a href="http://localhost:9000" class="font-bold pt-2">BinarCarRent</a>
         <div class="relative">
           <button class="md:hidden" onclick="toggleMenu()"><img id="burgerButton" src="images/menu.svg" alt="close button"></button>
           <nav id="navBar" class="hidden absolute top-[-29px] right-[-16px] w-[180px] bg-white p-5 h-[100vh]">
@@ -68,13 +68,7 @@
           </div>
           <div class="text-left flex flex-col w-[80%] lg:w-[25%]">
             <label for="time">Waktu Jemput/Ambil</label>
-            <select name="time" id="time" class="text-gray-400 border-[1.5px] border-gray-300 rounded-md h-[35px] mt-2">
-              <option value="08.00">08.00 WIB</option>
-              <option value="09.00">09.00 WIB</option>
-              <option value="10.00">10.00 WIB</option>
-              <option value="11.00">11.00 WIB</option>
-              <option value="12.00">12.00 WIB</option>
-            </select>
+            <input type="time" name="time" id="time" class="text-gray-400 border-[1.5px] border-gray-300 rounded-md h-[35px] mt-2">
           </div>
           <div class="text-left flex flex-col w-[80%] lg:w-[25%]">
             <label for="passengers">Jumlah Penumpang</label>
@@ -119,94 +113,52 @@
         <p class="font-bold py-4 md:pt-3">BinarCarRent</p>
       </div>
     </footer>
+    <script type="text/javascript" src="./scripts/filter.js"></script>
+    <script type="text/javascript" src="./scripts/component.js"></script>
+    <script type="text/javascript" src="./scripts/car.js"></script>
     <script>
-      const url = 'http://localhost:9000/data'
-      let responseData
-
-      function displayFilteredData(data) {
-        const resultDiv = document.getElementById('result')
-        resultDiv.innerHTML = ''
-        
-        if (data.length === 0) {
-          resultDiv.textContent = 'No data found.'
-          return
-        }
-
-        data.forEach(item => {
-          let cardHTML = `
-            <div class="relative grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 card border-2 p-5 rounded-lg">
-              <div class="h-[200px] w-full overflow-hidden">
-                <img class="" src=${item.image} alt="Car Image">
-              </div>
-              <div class="my-6">
-                <p>${item.type}/${item.model}</p>
-                <p class="font-bold my-2">Rp ${item.rentPerDay} / hari</p>
-                <p>${item.description}</p>
-                <div class="flex mt-2">
-                  <img class="w-[20px] mr-2" src="./images/capacity.png" alt="capacity">
-                  <p>${item.capacity} orang</p>
-                </div>
-                <div class="flex my-2">
-                  <img class="w-[20px] mr-2" src="./images/transmission.png" alt="transmission">
-                  <p>${item.transmission}</p>
-                </div>
-                <div class="flex mb-16">
-                  <img class="w-[20px] mr-2" src="./images/year.png" alt="year">
-                  <p>Tahun ${item.year}</p>
-                </div>
-              </div>
-              <button class="absolute bottom-5 bg-[#5CB85F] text-white w-[89%] py-2">Pilih Mobil</button>
-            </div>
-          `
-          const container = document.getElementById('result');
-          container.innerHTML += cardHTML;
-        })
-      }
-
-      async function filterData(e) {
-        const driverType = document.getElementById('driverType').value
-        const date = document.getElementById('date').value
-        const time = document.getElementById('time').value
-        const totalPassengers = document.getElementById('passengers').value
-        const body = JSON.stringify({
-          driverType,
-          date,
-          time,
-          totalPassengers 
-        })
-
-        e.preventDefault()
-        try {
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body
-            })
-
-            responseData = await response.json()
-
-            displayFilteredData(responseData)
-            console.log('Response:', responseData)
-        } catch (error) {
-            console.error('Error:', error.message)
-        }
-      }
-      
-
+      const url = 'http://localhost:9000/data';
+  
       // BURGER BUTTON
-      var nav = document.getElementById("navBar")
-      var burgerButton = document.getElementById("burgerButton")
+      var nav = document.getElementById("navBar");
+      var burgerButton = document.getElementById("burgerButton");
       function toggleMenu() {
-        if (nav.style.display === "block") {
-          nav.style.display = "none"
-          burgerButton.style.display = "block"
-        } else {
-          nav.style.display = "block"
-          burgerButton.style.display = "none"
-        }
+          if (nav.style.display === "block") {
+              nav.style.display = "none";
+              burgerButton.style.display = "block";
+          } else {
+              nav.style.display = "block";
+              burgerButton.style.display = "none";
+          }
       }
+
+      // DISABLED BUTTON
+      const driverTypeInput = document.getElementById('driverType');
+      const dateInput = document.getElementById('date');
+      const timeInput = document.getElementById('time');
+      const filterButton = document.getElementById('filter-btn');
+
+      function checkFieldsFilled() {
+          const driverType = driverTypeInput.value;
+          const date = dateInput.value;
+          const time = timeInput.value;
+
+          if (driverType === '' || date === '' || time === '') {
+              filterButton.disabled = true;
+              filterButton.classList.add('bg-gray-300', 'cursor-not-allowed');
+              filterButton.classList.remove('bg-[#5CB85F]');
+          } else {
+              filterButton.disabled = false;
+              filterButton.classList.remove('bg-gray-300', 'cursor-not-allowed');
+              filterButton.classList.add('bg-[#5CB85F]');
+          }
+      }
+
+      driverTypeInput.addEventListener('input', checkFieldsFilled);
+      dateInput.addEventListener('input', checkFieldsFilled);
+      timeInput.addEventListener('input', checkFieldsFilled);
+
+      checkFieldsFilled();
     </script>
   </body>
 </html>
